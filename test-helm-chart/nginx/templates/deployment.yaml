@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: cc-nginx
+spec:
+ replicas: 2
+ selector:
+    matchLabels:
+      app: cc-nginx 
+ template:
+    metadata:
+     labels:
+       app: cc-nginx
+       region: IN
+       rack: r1
+       version: "1.2"
+    spec:
+       containers:
+       - name: cc-nginx-con
+         image: {{ .Values.ccapp.image }}:{{ .Values.ccapp.imageTag }}
+         imagePullPolicy: Always
+#       imagePullSecrets:
+#       - name: cc-docker-secret 
