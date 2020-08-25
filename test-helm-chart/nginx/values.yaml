@@ -1,0 +1,3 @@
+ccapp:
+  image: "nginx"
+  imageTag: "latest"
